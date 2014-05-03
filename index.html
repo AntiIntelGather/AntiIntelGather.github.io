@@ -2,13 +2,14 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Template &middot; Bootstrap</title>
+    <title>反情搜文字直書產生器 | AntiIntelGather</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
 
     <!-- Le styles -->
     <link href="./assets/css/bootstrap.css" rel="stylesheet">
+    <script src="./assets/js/function.js"></script>
     <style type="text/css">
       body {
         padding-top: 20px;
@@ -71,15 +72,22 @@
           <li><a href="#">About</a></li>
           <li><a href="#">Contact</a></li>
         </ul>
-        <h3 class="muted">Project name</h3>
+        <h3 class="muted">反情搜文字直書產生器 | AntiIntelGather</h3>
       </div>
 
       <hr>
 
       <div class="jumbotron">
-        <h1>Super awesome marketing speak!</h1>
-        <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-        <a class="btn btn-large btn-success" href="#">Sign up today</a>
+        <h1>把你的橫書轉直書</h1>
+        <form class="navbar-form pull-left">
+          <input type="text" class="span7"  id="userText" value="輸入要轉換字串" >
+          <button type="submit" class="btn btn-large btn-success" onclick="myFunction()" >我要反情搜！</button>
+          <p>幾個字換行？<input type='text' id='lineLength' value="6"></p>
+
+          <textarea id="output"></textarea>
+
+        </form>
+
       </div>
 
       <hr>
