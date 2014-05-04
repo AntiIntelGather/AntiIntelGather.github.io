@@ -10,7 +10,7 @@
         } );
 
         client.on( 'aftercopy', function(event) {
-          console.log('Copied text to clipboard: ' + event.data['text/plain']);
+          debugstr("複製至剪貼簿!");
         } );
       } );
 
