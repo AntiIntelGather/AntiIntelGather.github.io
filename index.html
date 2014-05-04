@@ -9,6 +9,7 @@
 
     <!-- Le styles -->
     <link href="./assets/css/bootstrap.css" rel="stylesheet">
+    <script src="./assets/js/jquery-2.1.1.min.js"></script>
     <script src="./assets/js/function.js"></script>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -18,7 +19,6 @@
 
   ga('create', 'UA-50629068-1', 'antiintelgather.github.io');
   ga('send', 'pageview');
-
 </script>
     
     <style type="text/css">
@@ -77,44 +77,46 @@
 
   <div class="container-narrow">
 
-      <div class="masthead">
-        <ul class="nav nav-pills pull-right">
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-        <h3 class="muted">反情搜文字直書產生器 | AntiIntelGather</h3>
-      </div>
+    <div class="masthead">
+      <ul class="nav nav-pills pull-right">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <h3 class="muted">反情搜文字直書產生器 | AntiIntelGather</h3>
+    </div>
 
-   <div class="jumbotron">
+    <div class="jumbotron">
         <h1>把你的橫書轉直書</h1>
         <form class="navbar-form pull-left">
-          <input type="text" class="span7"  id="userText" placeholder="輸入要轉換字串，讓文字由橫書轉直書，以防止自動化偵測" >
+          <textarea rows="7" cols="70" Wrap="Off"  id="userText" style="margin: 0px 0px 10px; width: 647px; height: 140px;" 
+          placeholder="輸入要轉換字串，讓文字由橫書轉直書，以防止自動化偵測" ></textarea>
           
           
+
 
           
 
         </form>
 
-      </div>
-      <p>幾個字換行？
-          	
-          	<input type='text' class="span1" id='lineLength' value="6">
-          	<button type="submit" class="btn btn-large btn-success" onclick="myFunction()" >我要反情搜！</button>
+    </div>
+        	<button type="submit" class="btn btn-large btn-success" onclick="myFunction()" >我要反情搜！</button>
           	
           	
-          </p>
-      <textarea rows="7"  cols="70" id="output" style="margin: 0px 0px 10px; width: 647px; height: 140px;" ></textarea>
-      <hr>
+        </p>
+    <textarea rows="7" cols="70" Wrap="Off" id="output" style="margin: 0px 0px 10px; width: 647px; height: 140px;" ></textarea>
+    <button id="CopyButton" class="btn btn-large btn-success" data-clipboard-target="output" data-clipboard-text="Copy me!" title="複製到剪貼簿">複製</button>
+    <div id="d_debug"></div>
+    <hr>
 
-<div class="footer">
+    <div class="footer">
       <ul class="nav nav-pills pull-right">
-          <li><a href="https://github.com/AntiIntelGather/AntiIntelGather.github.io">GitHub</a></li>
-          <li><a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0 Universal</a></li>
-        </ul>
-      </div>
-</div>
-
+        <li><a href="https://github.com/AntiIntelGather/AntiIntelGather.github.io">GitHub</a></li>
+        <li><a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0 Universal</a></li>
+      </ul>
+    </div>
+  </div>
+    <script src="./assets/js/ZeroClipboard.min.js"></script> 
+    <script src="./assets/js/copyToClipboard.js"></script>
 </body>
 </html>
