@@ -19,7 +19,6 @@
 
   ga('create', 'UA-50629068-1', 'antiintelgather.github.io');
   ga('send', 'pageview');
-
 </script>
     
     <style type="text/css">
@@ -106,7 +105,8 @@
           	
         </p>
     <textarea rows="7" cols="70" Wrap="Off" id="output" style="margin: 0px 0px 10px; width: 647px; height: 140px;" ></textarea>
-    <button id="CopyButton" class="btn btn-large btn-success" data-clipboard-target="output" title="複製到剪貼簿">複製</button>
+    <button id="CopyButton" class="btn btn-large btn-success" data-clipboard-target="output" data-clipboard-text="Copy me!" title="複製到剪貼簿">複製</button>
+    <div id="d_debug"></div>
     <hr>
 
     <div class="footer">
@@ -116,5 +116,7 @@
       </ul>
     </div>
   </div>
+    <script src="./assets/js/ZeroClipboard.min.js"></script> 
+    <script src="./assets/js/copyToClipboard.js"></script>
 </body>
 </html>
