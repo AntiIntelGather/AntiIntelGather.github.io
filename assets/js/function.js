@@ -16,74 +16,108 @@ function autoheight(a) {
 
 autoheight($("#ta"));
 
+String.prototype.splice = function( idx, rem, s ) {
+    return (this.slice(0,idx) + s + this.slice(idx + Math.abs(rem)));
+};
+
+function getIntRand(min, max) {
+    return Math.abs(Math.ceil(Math.random()*(max-min+1)+min-1));
+}
+
+
 function myFunction()
 {
-var userText = document.getElementById("userText").value;
-var lineLength = document.getElementById("lineLength").value;
+    var userText = document.getElementById("userText").value;
+    var userTextLength = userText.length;
+    var lineLength = getIntRand(0, userTextLength);
 
-if(userText.length%lineLength!=0)
-{
-	var spaceNum = lineLength-((userText.length)%lineLength);
+    // Adding random # of space.
+    startChar = 0;
+    while(startChar< userTextLength)
+    {
+        rand = getIntRand(0, userTextLength);
 
-	for (var i=0;i<spaceNum;i++)
-	{
-		userText+=String.fromCharCode(32);
-	}
-}
+        console.log('startChar, rand', startChar, rand);
 
-var temp = 0;
-var textTemp = "";
+        userText = userText.splice( startChar + rand, 0, String.fromCharCode(32));
 
-for(var i=0;i<userText.length;i++)
-{
-	if(userText.charCodeAt(i)==32)
-	{
-		temp=12288;
-	}
-	else if(userText.charCodeAt(i)>=33&&userText.charCodeAt(i)<=126)
-	{
-		temp=userText.charCodeAt(i)+65248;
-	}
-	else
-	{
-		temp=userText.charCodeAt(i);
-	}
-	textTemp+=String.fromCharCode(temp);
-}
+        console.log('userText', userText);
 
-var lines = textTemp.length/lineLength;
-var TP1 = new Array(lines);
-for(var i=0;i<lines;i++)
-{
-	TP1[i] = new Array(lineLength);
-}
-var TP2 = new Array(lines);
-for(var i=0;i<lines;i++)
-{
-	TP2[i] = new Array(lineLength);
-}
+        userTextLength = userTextLength - rand;
+        startChar = rand + 1;
 
-var TP1count=0;
-for(var i=0;i<lines;i++)
-{
-	for(var j=0;j<lineLength;j++)
-	{
-		TP1[i][j]=textTemp.charAt(TP1count);
-		TP1count++;
-	}
-}
+    }
 
-var x = "";
 
-for(var i=0;i<lineLength;i++)
-{
-	for(var j=lines-1;j>=0;j--)
-	{
-		x = x.concat(TP1[j][i]);
-		x += String.fromCharCode(32);
-	}
-	x = x.concat('\n');
-}
+    if(userText.length%lineLength!=0)
+    {
+        var spaceNum = lineLength-((userText.length)%lineLength);
 
-document.getElementById("output").innerHTML = x;
+      	for (var i=0;i<spaceNum;i++)
+      	{
+      		  userText+=String.fromCharCode(32);
+      	}
+    }
+
+    var temp = 0;
+    var textTemp = "";
+
+    for(var i=0;i<userText.length;i++)
+    {
+    	if(userText.charCodeAt(i)==32)
+    	{
+    		  temp=12288;
+    	}
+    	else if(userText.charCodeAt(i)>=33&&userText.charCodeAt(i)<=126)
+    	{
+    		  temp=userText.charCodeAt(i)+65248;
+    	}
+    	else
+    	{
+    		  temp=userText.charCodeAt(i);
+    	}
+
+    	textTemp+=String.fromCharCode(temp);
+    }
+
+    var lines = textTemp.length/lineLength;
+
+    console.log('lines', lines);
+
+    var TP1 = new Array(lines);
+
+    for(var i=0;i<lines;i++)
+    {
+        TP1[i] = new Array(lineLength);
+    }
+
+    var TP2 = new Array(lines);
+    for(var i=0;i<lines;i++)
+    {
+        TP2[i] = new Array(lineLength);
+    }
+
+    var TP1count=0;
+    for(var i=0;i<lines;i++)
+    {
+      	for(var j=0;j<lineLength;j++)
+      	{
+        		TP1[i][j]=textTemp.charAt(TP1count);
+        		TP1count++;
+      	}
+    }
+
+    var x = "";
+
+    for(var i=0;i<lineLength;i++)
+    {
+      	for(var j=lines-1;j>=0;j--)
+      	{
+        		x = x.concat(TP1[j][i]);
+        		x += String.fromCharCode(32);
+      	}
+      	x = x.concat('\n');
+    }
+
+    document.getElementById("output").innerHTML = x;
 }
