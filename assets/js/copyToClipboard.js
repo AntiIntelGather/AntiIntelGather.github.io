@@ -14,8 +14,6 @@
 	var clip=new ZeroClipboard($("CopyButton"),{
 		moviePath:"./assets/js/ZeroClipboard.swf"
 	});
-
-	clip.glue('CopyButton');
 	
 	clip.on('ready',function(client){
 		debugstr("Flash 文件已经载入");
