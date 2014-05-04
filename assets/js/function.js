@@ -36,6 +36,7 @@ var textTemp = "";
 
 for(var i=0;i<userText.length;i++)
 {
+	console.info(userText.charCodeAt(i)+":"+userText[i]);
 	if(userText.charCodeAt(i)==32)
 	{
 		temp=12288;
@@ -49,6 +50,7 @@ for(var i=0;i<userText.length;i++)
 		temp=userText.charCodeAt(i);
 	}
 	textTemp+=String.fromCharCode(temp);
+
 }
 
 var lines = textTemp.length/lineLength;
@@ -86,4 +88,66 @@ for(var i=0;i<lineLength;i++)
 }
 
 document.getElementById("output").innerHTML = x;
+}
+
+function myFunction1()
+{
+	var FullSpace = '　';
+	var userText = document.getElementById("userText").value;
+
+	var messages = userText.split('\n');
+
+	console.log("messages: "+messages);
+
+	var maxLength = Math.max.apply(Math, $.map(messages, function (el) { return el.length }));
+
+	var result = Array.apply(null,new Array(maxLength)).map(String.prototype.valueOf,"") //new Array(maxLength);
+
+	//console.log("maxLength: "+maxLength);
+	//console.log("result: "+result);
+
+	var row = 0;
+
+	for (var inputRow = messages.length - 1; inputRow >= -1; inputRow--) 
+	{
+		//console.log("inputRow: "+inputRow);
+		for (var inputColumn = 0; inputColumn < maxLength; inputColumn++) 
+		{
+			//console.log("inputColumn: "+inputColumn);
+			//console.log("messages[inputRow].Length: "+messages[inputRow].Length);
+			if(inputRow == -1)
+			{
+				result[row++] += "\n"
+			}
+			else if (inputColumn < messages[inputRow ].length) 
+			{
+				//console.log("messages["+inputRow+"]["+inputColumn+"]: "+messages[inputRow][inputColumn]);
+				var code = messages[inputRow].charCodeAt(inputColumn);
+				if(code>=33&&code<=126)
+				{
+					result[row++] += String.fromCharCode(code+65248);
+				}
+				else
+				{
+					result[row++] += messages[inputRow][inputColumn];
+				}
+			}
+			else
+			{
+				result[row++] += FullSpace;
+			};
+		};
+
+		row = 0;
+	};
+
+	console.log(result);
+	var outputText = "";
+
+	for (var i = 0; i < result.length; i++) {
+		outputText += result[i];
+	};
+	console.log(outputText);
+
+document.getElementById("output").innerHTML = outputText;
 }
