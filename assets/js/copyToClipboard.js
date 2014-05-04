@@ -1,5 +1,5 @@
 (function() {
-        var client = new ZeroClipboard(document.getElementById('CopyButton') );
+        var client = new ZeroClipboard(document.getElementById('output') );
 
         
       client.on( 'ready', function(event) {
