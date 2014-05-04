@@ -1,12 +1,12 @@
 (function() {
-        var client = new ZeroClipboard(document.getElementById('output') );
+        var client = new ZeroClipboard(document.getElementById('CopyButton') );
 
         
       client.on( 'ready', function(event) {
         // console.log( 'movie is loaded' );
 
         client.on( 'copy', function(event) {
-          event.clipboardData.setData('text/plain', event.target.innerHTML);
+          event.clipboardData.setData('text/plain', document.getElementById('output').innerHTML);
         } );
 
         client.on( 'aftercopy', function(event) {
