@@ -11,7 +11,7 @@
 	clip.glue(document.getElementById("CopyButton"));
 	*/
 
-	var clip=new ZeroClipboard($(".CopyButton"),{
+	var clip=new ZeroClipboard($("CopyButton"),{
 		moviePath:"./assets/css/ZeroClipboard.swf"
 	});
 
