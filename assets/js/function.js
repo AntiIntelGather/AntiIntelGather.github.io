@@ -23,8 +23,6 @@ function myFunction()
 
 	var messages = userText.split('\n');
 
-	console.log("messages: "+messages);
-
 	var maxLength = Math.max.apply(Math, $.map(messages, function (el) { return el.length }));
 
 	var result = Array.apply(null,new Array(maxLength)).map(String.prototype.valueOf,"")
@@ -37,36 +35,39 @@ function myFunction()
 		{
 			if(inputRow == -1)
 			{
-				result[row++] += "\n"
+				result[row] += "\n"
 			}
 			else if (inputColumn < messages[inputRow ].length) 
 			{
 				var code = messages[inputRow].charCodeAt(inputColumn);
 				if(code>=33&&code<=126)
 				{
-					result[row++] += String.fromCharCode(code+65248);
+					result[row] += String.fromCharCode(code+65248);
 				}
+				else if(code == 32)
+					result[row] += FullSpace;
 				else
 				{
-					result[row++] += messages[inputRow][inputColumn];
+					result[row] += messages[inputRow][inputColumn];
 				}
+				result[row] += " "
 			}
 			else
 			{
-				result[row++] += FullSpace;
+				result[row] += FullSpace;
+				result[row] += " "
 			};
+			row++;
 		};
 
 		row = 0;
 	};
 
-	console.log(result);
 	var outputText = "";
 
 	for (var i = 0; i < result.length; i++) {
 		outputText += result[i];
 	};
-	console.log(outputText);
 
 document.getElementById("output").innerHTML = outputText;
 }
