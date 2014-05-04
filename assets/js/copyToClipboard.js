@@ -15,7 +15,7 @@
 		moviePath:"./assets/css/ZeroClipboard.swf"
 	});
 
-	clip.on('load',function(client){
+	clip.on('ready',function(client){
 		debugstr("Flash 文件已经载入");
 	});
 	
