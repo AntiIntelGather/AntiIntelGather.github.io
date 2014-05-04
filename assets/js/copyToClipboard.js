@@ -1,6 +1,6 @@
 (function() {
         var clip = new ZeroClipboard($("CopyButton"));
-        clip.addEventListener('mouseDown',function() {
+        clip.on("copy",function() {
             clip.setText(ZeroClipboard.$('#output').val());
             debugstr("copied!");
         });
