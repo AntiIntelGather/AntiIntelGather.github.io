@@ -12,9 +12,11 @@
 	*/
 
 	var clip=new ZeroClipboard($("CopyButton"),{
-		moviePath:"./assets/css/ZeroClipboard.swf"
+		moviePath:"./assets/js/ZeroClipboard.swf"
 	});
 
+	clip.glue('CopyButton');
+	
 	clip.on('ready',function(client){
 		debugstr("Flash 文件已经载入");
 	});
@@ -32,14 +34,10 @@
 	clip.on('complete',function(client,args){
 		debugstr("已复制到剪贴板内容为：" + args.text);
 	});
-	
+
 	// jquery stuff(optional)
 	function debugstr(text){
 		$("#d_debug").append($("<p>").text(text));
 	};
 
-	$("#clear-test").on("click",function(){
-		$("#fe_text").val("Copy me!");
-		$("#testarea").val("");
-	});
 })();
