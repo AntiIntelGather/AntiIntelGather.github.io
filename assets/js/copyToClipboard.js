@@ -1,12 +1,12 @@
 (function() {
-        var clip = new ZeroClipboard.Client();
+        var clip = new ZeroClipboard($("CopyButton"));
         clip.setHandCursor(true);
         clip.glue('CopyButton');
         clip.addEventListener('mouseDown',function() {
             clip.setText(ZeroClipboard.$('#output').val());
             debugstr("copied!");
         });
-})()
+})();
 
 	// jquery stuff(optional)
 	function debugstr(text){
